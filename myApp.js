@@ -1,11 +1,14 @@
 const express = require('express');
 const app = express();
-const helmet = require('helmet')
+const helmet = require('helmet');
 
-app.use(helmet.hidePoweredBy())
+// this is helmet to keep powredBy hidden from hackers
+app.use(helmet.hidePoweredBy());
 
+// sets the X-Frame-Options header. It restricts who can put your site in a frame. It has three modes: DENY, SAMEORIGIN, and ALLOW-FROM
+app.use(helmet.frameguard({action: 'deny'}));
 
-
+//The X-XSS-Protection HTTP header is a basic protection. The browser detects a potential injected script using a heuristic filter. If the header is enabled, the browser changes the script code, neutralizing it. It still has limited support
 
 
 
