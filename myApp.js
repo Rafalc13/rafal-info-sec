@@ -14,6 +14,8 @@ app.use(helmet.xssFilter());
 // This middleware sets the X-Content-Type-Options header to nosniff, instructing the browser to not bypass the provided Content-Type
 app.use(helmet.noSniff());
 
+// This middleware sets the X-Download-Options header to noopen. This will prevent IE users from executing downloads in the trusted site’s context.
+app.use(helmet.ieNoOpen());
 
 
 
