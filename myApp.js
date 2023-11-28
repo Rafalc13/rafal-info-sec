@@ -11,7 +11,8 @@ app.use(helmet.frameguard({action: 'deny'}));
 //The X-XSS-Protection HTTP header is a basic protection. The browser detects a potential injected script using a heuristic filter. If the header is enabled, the browser changes the script code, neutralizing it. It still has limited support
 app.use(helmet.xssFilter());
 
-
+// This middleware sets the X-Content-Type-Options header to nosniff, instructing the browser to not bypass the provided Content-Type
+app.use(helmet.noSniff());
 
 
 
