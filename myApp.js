@@ -17,6 +17,9 @@ app.use(helmet.noSniff());
 // This middleware sets the X-Download-Options header to noopen. This will prevent IE users from executing downloads in the trusted site’s context.
 app.use(helmet.ieNoOpen());
 
+// HTTP Strict-Transport-Security, you tell the browsers to use HTTPS for the future requests in a specified amount of time. This will work for the requests coming after the initial request.
+nintydaysinsecondsformula = 90*24*60*60;
+app.use(helmet.hsts({maxAge: nintydaysinsecondsformula, force: true}));
 
 
 
