@@ -27,6 +27,8 @@ app.use(helmet.dnsPrefetchControl());
 // you want the users to always download the newer version, try to disable caching on client’s browser. It can be useful in development too. Caching has performance benefits, which you will lose, so only use this option when there is a real need.
 app.use(helmet.noCache());
 
+// promising new defense that can significantly reduce the risk and impact of many type of attacks in modern browsers. By setting and configuring a Content Security Policy you can prevent the injection of anything unintended into your page. This will protect your app from XSS vulnerabilities, undesired tracking, malicious frames, and much more.
+app.use(helmet.contentSecurityPolicy({directives: {defaultSrc: ["'self'"], scriptSrc: ["'self'", 'trusted-cdn.com']}}))
 
 
 
