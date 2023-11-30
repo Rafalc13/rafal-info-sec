@@ -21,6 +21,9 @@ app.use(helmet.ieNoOpen());
 nintydaysinsecondsformula = 90*24*60*60;
 app.use(helmet.hsts({maxAge: nintydaysinsecondsformula, force: true}));
 
+// most browsers prefetch DNS records for the links in a page. In that way the destination ip is already known when the user clicks on a link. This may lead to over-use of the DNS service, privacy issues or page statistics alteration 
+app.use(helmet.dnsPrefetchControl());
+
 
 
 
