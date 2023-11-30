@@ -24,6 +24,8 @@ app.use(helmet.hsts({maxAge: nintydaysinsecondsformula, force: true}));
 // most browsers prefetch DNS records for the links in a page. In that way the destination ip is already known when the user clicks on a link. This may lead to over-use of the DNS service, privacy issues or page statistics alteration 
 app.use(helmet.dnsPrefetchControl());
 
+// you want the users to always download the newer version, try to disable caching on client’s browser. It can be useful in development too. Caching has performance benefits, which you will lose, so only use this option when there is a real need.
+app.use(helmet.noCache());
 
 
 
