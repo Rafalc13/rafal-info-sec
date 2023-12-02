@@ -31,6 +31,21 @@ app.use(helmet.noCache());
 app.use(helmet.contentSecurityPolicy({directives: {defaultSrc: ["'self'"], scriptSrc: ["'self'", 'trusted-cdn.com']}}))
 
 
+//app.use(helmet()) will automatically include all the middleware introduced above, except noCache(), and contentSecurityPolicy(), but these can be enabled if necessary. You can also disable or configure any other middleware individually, using a configuration object.
+app.use(helmet({
+  frameguard: {         // configure
+    action: 'deny'
+  },
+  contentSecurityPolicy: {    // enable and configure
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ['style.com'],
+    }
+  },
+  dnsPrefetchControl: false     // disable
+}))
+
+
 
 
 
